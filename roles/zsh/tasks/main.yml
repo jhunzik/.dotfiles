@@ -1,0 +1,15 @@
+---
+- name: "Create .zshrc"
+  copy:
+    src: .zshrc
+    dest: "/home/{{ username }}/.zshrc"
+  notify: source zshrc
+  tags:
+    - zsh
+
+- name: "Install plugins"
+  include_tasks: 
+    file: plugins.yml
+    apply:
+      tags:
+        - zsh

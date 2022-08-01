@@ -1,0 +1,11 @@
+---
+packages:
+  - bottom
+  - exa
+  - fzf
+  - git
+  - neofetch
+  - neovim
+  - ripgrep
+  - vagrant
+  - zsh

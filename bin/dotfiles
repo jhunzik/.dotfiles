@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -e
+
+DOTFILES_DIR="$HOME/.dotfiles"
+
+if [[ "$(uname -s)" -eq "Linux" ]]; then
+    echo "Detected Linux-based OS"
+    if ! [ -x "$(command -v ansible)" ]; then
+        echo "Installing ansible"
+        sudo dnf install ansible -y
+    fi
+elif [[ "$(uname -s)" -eq "Darwin" ]]; then
+    echo "Detected Darwin-based OS"
+    if ! [ -x "$(command -v ansible)" ]; then
+        echo "Installing ansible"
+        sudo brew install ansible -y
+    fi
+fi
+
+if [[ -f "$DOTFILES_DIR/requirements.yml" ]]; then
+    ansible-galaxy install -r "$DOTFILES_DIR/requirements.yml"
+fi
+
+if [[ -f "$DOTFILES_DIR/vault-pass.sh" ]]; then
+    ansible-playbook --diff -K "$DOTFILES_DIR/main.yml" -t ${1:-all}
+else
+    ansible-playbook --diff -K "$DOTFILES_DIR/main.yml" -t ${1:-all}
+fi

@@ -1,0 +1,7 @@
+---
+- name: "Copy nvim conf"
+  copy:
+    src: init.vim
+    dest: "/home/{{ username }}/.config/nvim/"
+    owner: "{{ username }}"
+    mode: 0644
