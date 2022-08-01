@@ -2,7 +2,7 @@
 - name: "Copy tmux config."
   copy:
     src: .tmux.conf
-    dest: "/home/{{ username }}/.tmux.conf"
+    dest: "$HOME/.tmux.conf"
     mode: 0644
   tags:
     - tmux
@@ -11,8 +11,8 @@
   become_user: "{{ username }}"
   git:
     repo: "{{ item.repo }}"
-    dest: "/home/{{ username }}/.tmux/plugins/{{ item.dir }}"
-    key_file: "/home/{{ username }}/.ssh/id_ed25519"
+    dest: "$HOME/.tmux/plugins/{{ item.dir }}"
+    accept_hostkey: true
   with_items:
     - { repo: "git@github.com:tmux-plugins/tpm", dir: "tpm" }
     - { repo: "git@github.com:tmux-plugins/tmux-continuum.git", dir: "tmux-continuum" }

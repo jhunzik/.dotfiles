@@ -7,5 +7,13 @@ packages:
   - neofetch
   - neovim
   - ripgrep
-  - vagrant
   - zsh
+
+apps:
+  - notion
+  - slack
+  - vagrant
+
+mac_apps:
+  - alfred
+  - rectangle

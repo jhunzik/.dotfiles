@@ -2,8 +2,7 @@
 - name: "Create .zshrc"
   copy:
     src: .zshrc
-    dest: "/home/{{ username }}/.zshrc"
-  notify: source zshrc
+    dest: "$HOME/.zshrc"
   tags:
     - zsh
 

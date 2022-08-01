@@ -1,0 +1,22 @@
+---
+- name: "Install packages."
+  homebrew:
+    update_homebrew: true
+    upgrade_all: true
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ packages }}"
+  tags:
+    - system
+
+- name: "Install casks."
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ apps }}"
+    - "{{ mac_apps }}"
+  tags:
+    - system
+

@@ -4,13 +4,13 @@ set -e
 
 DOTFILES_DIR="$HOME/.dotfiles"
 
-if [[ "$(uname -s)" -eq "Linux" ]]; then
+if [ "$(uname -s)" = "Linux" ]; then
     echo "Detected Linux-based OS"
     if ! [ -x "$(command -v ansible)" ]; then
         echo "Installing ansible"
         sudo dnf install ansible -y
     fi
-elif [[ "$(uname -s)" -eq "Darwin" ]]; then
+elif [ "$(uname -s)" = "Darwin" ]; then
     echo "Detected Darwin-based OS"
     if ! [ -x "$(command -v ansible)" ]; then
         echo "Installing ansible"

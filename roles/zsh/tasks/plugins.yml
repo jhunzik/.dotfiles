@@ -1,7 +1,7 @@
 ---
 - name: "Create zsh plugins directory."
   file:
-    path: "/home/{{ username }}/.zsh-plugins"
+    path: "$HOME/.zsh-plugins"
     state: directory
     mode: 0744
     owner: "{{ username }}"
@@ -9,15 +9,14 @@
 - name: "Copy any additional zsh plugins."
   copy:
     src: "zsh_plugins/"
-    dest: "/home/{{ username }}/.zsh-plugins/"
+    dest: "$HOME/.zsh-plugins/"
     mode: 0744
     owner: "{{ username }}"
 
 - name: "Copy zsh plugin repos"
   git:
     repo: "{{ item.repo }}"
-    dest: "/home/{{ username }}/.zsh-plugins/{{ item.dir }}"
-    key_file: "/home/{{ username }}/.ssh/id_ed25519"
+    dest: "$HOME/.zsh-plugins/{{ item.dir }}"
     accept_hostkey: true
   with_items:
     - { repo: "git@github.com:zsh-users/zsh-syntax-highlighting.git", dir: "zsh-syntax-highlighting" }

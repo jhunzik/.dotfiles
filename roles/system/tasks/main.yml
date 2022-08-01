@@ -1,8 +1,11 @@
 ---
+- include_tasks: common.yml
+
 - include_tasks: fedora.yml
   when: ansible_os_family == "RedHat"
+  args:
+    apply:
+      become: true
 
 - include_tasks: mac.yml
   when: ansible_os_family == "Darwin"
-
-- include_tasks: essential.yml

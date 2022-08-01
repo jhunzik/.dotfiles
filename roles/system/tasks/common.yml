@@ -1,0 +1,11 @@
+---
+- name: "Copy scripts to host."
+  copy:
+    src: "{{ item }}"
+    dest: "$HOME/bin/"
+    mode: 0644
+    owner: "{{ username }}"
+  with_fileglob:
+    - bin/*
+  tags:
+    - system
