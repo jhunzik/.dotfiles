@@ -4,14 +4,18 @@
 
   roles:
     - role: system
-      become: true
       tags: system
+      become: true
+
     - role: zsh
       tags: zsh
+
     - role: ssh
-      become: true
       tags: ssh
+      become: true
+
     - role: tmux
       tags: tmux
+
     - role: nvim
       tags: nvim
