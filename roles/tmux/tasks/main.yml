@@ -2,20 +2,16 @@
 - name: "Copy tmux config."
   copy:
     src: .tmux.conf
-    dest: "$HOME/.tmux.conf"
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
     mode: 0644
-  tags:
-    - tmux
 
 - name: "Copy tmux plugin repos"
   become_user: "{{ username }}"
   git:
     repo: "{{ item.repo }}"
-    dest: "$HOME/.tmux/plugins/{{ item.dir }}"
+    dest: "{{ ansible_env.HOME }}/.tmux/plugins/{{ item.dir }}"
     accept_hostkey: true
   with_items:
     - { repo: "git@github.com:tmux-plugins/tpm", dir: "tpm" }
     - { repo: "git@github.com:tmux-plugins/tmux-continuum.git", dir: "tmux-continuum" }
     - { repo: "git@github.com:tmux-plugins/tmux-resurrect.git", dir: "tmux-resurect" }
-  tags:
-    - tmux

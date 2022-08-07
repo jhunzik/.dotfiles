@@ -1,11 +1,14 @@
 ---
+# Versions
+nvim_version: "v0.7.2"
+
+# Apps and Packages
 packages:
-  - bottom
+  - htop
   - exa
   - fzf
   - git
   - neofetch
-  - neovim
   - ripgrep
   - zsh
 

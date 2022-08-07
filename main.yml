@@ -3,8 +3,15 @@
   connection: local
 
   roles:
-    - system
-    - zsh
-    - ssh
-    - tmux
-    - nvim
+    - role: system
+      become: true
+      tags: system
+    - role: zsh
+      tags: zsh
+    - role: ssh
+      become: true
+      tags: ssh
+    - role: tmux
+      tags: tmux
+    - role: nvim
+      tags: nvim

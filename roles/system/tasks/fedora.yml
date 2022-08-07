@@ -1,14 +1,11 @@
 ---
 - name: "Install packages."
-  become: true
   package:
     name: "{{ item }}"
     state: present
   with_items:
     - "{{ apps }}"
     - "{{ packages }}"
-  tags:
-    - system
 
 - name: "Enable neovim repo."
   community.general.copr: 

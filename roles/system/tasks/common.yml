@@ -1,11 +1,16 @@
 ---
+- name: "Install packages."
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ packages }}"
+  
 - name: "Copy scripts to host."
   copy:
     src: "{{ item }}"
-    dest: "$HOME/bin/"
-    mode: 0644
+    dest: "{{ ansible_env.HOME }}/bin/"
+    mode: 0744
     owner: "{{ username }}"
   with_fileglob:
     - bin/*
-  tags:
-    - system

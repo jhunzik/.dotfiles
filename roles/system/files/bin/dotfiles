@@ -8,7 +8,7 @@ if [ "$(uname -s)" = "Linux" ]; then
     echo "Detected Linux-based OS"
     if ! [ -x "$(command -v ansible)" ]; then
         echo "Installing ansible"
-        sudo dnf install ansible -y
+        sudo apt install ansible -y
     fi
 elif [ "$(uname -s)" = "Darwin" ]; then
     echo "Detected Darwin-based OS"
