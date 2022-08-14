@@ -1,36 +1,18 @@
 ---
-- name: "Download nvim tarball"
+- name: "Add neovim ppa"
   become: true
-  get_url:
-    url: "https://github.com/neovim/neovim/releases/download/{{ nvim_version }}/nvim-linux64.tar.gz"
-    dest: /tmp
+  apt_repository:
+    repo: "ppa:neovim-ppa/stable"
+    codename: jammy
 
-- name: "Extract nvim binary"
+- name: "install neovim"
   become: true
-  unarchive:
-    src: /tmp/nvim-linux64.tar.gz
-    dest: /tmp
-
-- name: "Copy nvim binary to user scripts"
-  become: true
-  copy:
-    src: /tmp/nvim-linux64/bin/nvim
-    dest: /usr/bin/
-    mode: 0755
-
-- name: "Create nvim autoload dir"
-  file:
-    path: "{{ ansible_env.HOME }}/.local/share/nvim/site/autoload/"
-    state: directory
-
-- name: "Download vimplug"
-  get_url:
-    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    dest: "{{ ansible_env.HOME }}/.local/share/nvim/site/autoload/"
+  package:
+    name: neovim
 
 - name: "Copy nvim conf"
   copy:
-    src: init.vim
+    src: "{{ role_path }}/files/nvim/"
     dest: "{{ ansible_env.HOME }}/.config/nvim/"
-    owner: "{{ username }}"
     mode: 0644
+    owner: "{{ username }}"
