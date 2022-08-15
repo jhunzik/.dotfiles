@@ -13,3 +13,5 @@
     dest: "{{ ansible_env.HOME }}/.config/nvim/"
     mode: 0644
     owner: "{{ username }}"
+
+- import_tasks: plugins.yml
