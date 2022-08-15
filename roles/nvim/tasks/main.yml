@@ -1,14 +1,11 @@
 ---
-- name: "Add neovim ppa"
+- name: "Unzip win32yank utility"
   become: true
-  apt_repository:
-    repo: "ppa:neovim-ppa/stable"
-    codename: jammy
-
-- name: "install neovim"
-  become: true
-  package:
-    name: neovim
+  unarchive:
+    src: https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
+    dest: /usr/local/bin/
+    remote_src: true
+    mode: 0755
 
 - name: "Copy nvim conf"
   copy:

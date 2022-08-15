@@ -18,7 +18,6 @@ vim.opt.scrolloff = 10
 vim.opt.signcolumn = 'no'
 vim.opt.colorcolumn = '120'
 vim.opt.showcmd = true
-vim.opt.clipboard = 'unnamedplus'
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
 vim.opt.shell = 'zsh'
