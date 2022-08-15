@@ -1,9 +1,4 @@
 ---
-- name: "Install zsh"
-  become: true
-  package:
-    name: zsh
-      
 - name: "Set shell for user"
   become: true
   user:

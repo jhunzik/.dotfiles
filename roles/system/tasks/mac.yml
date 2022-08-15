@@ -1,5 +1,6 @@
 ---
 - name: "Install packages."
+  become: false
   homebrew:
     update_homebrew: true
     upgrade_all: true
@@ -9,6 +10,7 @@
     - "{{ packages }}"
 
 - name: "Install casks."
+  become: false
   homebrew_cask:
     name: "{{ item }}"
     state: present

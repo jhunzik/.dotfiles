@@ -6,6 +6,7 @@
     dest: /usr/local/bin/
     remote_src: true
     mode: 0755
+  when: ansible_os_family == "Debian"
 
 - name: "Copy nvim conf"
   copy:
