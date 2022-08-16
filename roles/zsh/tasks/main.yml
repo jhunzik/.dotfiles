@@ -1,10 +1,4 @@
 ---
-- name: "Set shell for user"
-  become: true
-  user:
-    name: "{{ username }}"
-    shell: /usr/bin/zsh
-
 - name: "Create .zshrc"
   copy:
     src: .zshrc

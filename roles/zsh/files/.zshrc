@@ -1,10 +1,4 @@
-if [[ -z $TMUX ]]; then;
-	tmux attach
-fi
-
-fpath+=$HOME/.zsh-plugins/pure
-autoload -Uz compinit promptinit; compinit; promptinit;
-prompt pure
+tmux attach
 
 PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/bin:$HOME/bin:/opt/puppetlabs/bin
 alias vim=nvim
@@ -41,12 +35,17 @@ alias ll="ls -lah"
 alias dsh="docker_ssh"
 alias dlog="docker_log"
 
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/hunziker/.zshrc'
-# End of lines added by compinstall
+# Start ZSH Plugins
+zstyle :compinstall filename '$HOME/.zshrc'
+autoload -Uz compinit; compinit
 
 # Source all plugins
 for f in ~/.zsh-plugins/*/*.zsh; do source $f; done
+
+fpath+=$HOME/.zsh-plugins/pure
+autoload -Uz promptinit; promptinit
+prompt pure
+# End ZSH Plugins
 
 # Source work .zsh
 if [[ -e $HOME/.work.zsh ]] then;
@@ -55,6 +54,3 @@ fi
 
 # fzf key bindings
 [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
-
-
-if [ -e /home/hunziker/.nix-profile/etc/profile.d/nix.sh ]; then . /home/hunziker/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
