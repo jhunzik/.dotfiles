@@ -9,6 +9,7 @@ packages:
   - neofetch
   - neovim
   - ripgrep
+  - tmux
   - tree
   - zsh
 

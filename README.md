@@ -5,7 +5,7 @@ My personal dotfiles and development plugins. This repo uses Ansible to automate
 - Ansible
 - `.../host_vars/localhost/vars.yml` with your username:
     ``` yaml
-    username = "username"
+    username: "username"
     ```
 
 ## Usage
