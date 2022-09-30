@@ -1,4 +1,4 @@
-tmux attach
+tmux new -A -s dev
 
 PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/bin:$HOME/bin:/opt/puppetlabs/bin
 alias vim=nvim
