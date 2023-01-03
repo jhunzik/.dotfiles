@@ -1,6 +1,7 @@
-tmux new -A -s dev
+PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/bin:$HOME/bin:$HOME/.local/bin:/opt/puppetlabs/bin
+PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+tmux-session dev
 
-PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/bin:$HOME/bin:/opt/puppetlabs/bin
 alias vim=nvim
 
 # Env Vars
@@ -11,6 +12,8 @@ VISUAL=nvim
 EDITOR=$VISUAL
 FZF_DEFAULT_OPTS="--height 40% --layout reverse --info inline --border"
 FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob "!.git/*""
+PY_COLORS=1
+ANSIBLE_FORCE_COLOR=1
 
 unsetopt beep
 bindkey -e
