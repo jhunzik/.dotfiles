@@ -7,7 +7,6 @@ packages:
   - fzf
   - git
   - neofetch
-  - neovim
   - ripgrep
   - tmux
   - tree

@@ -1,14 +1,8 @@
 ---
-- name: "Add neovim ppa"
-  become: true
-  apt_repository:
-    repo: "ppa:neovim-ppa/stable"
-    codename: jammy
-
 - name: "Install packages."
   package:
     name: "{{ item }}"
-    state: present
+    state: latest
   with_items:
     - "{{ packages }}"
     - "{{ ubuntu_packages }}"

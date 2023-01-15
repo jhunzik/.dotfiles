@@ -8,10 +8,26 @@
     mode: 0755
   when: ansible_os_family == "Debian"
 
+- name: "Clone neovim stable branch"
+  become_user: "{{ username }}"
+  git:
+    repo: "https://github.com/neovim/neovim"
+    dest: "/home/{{ username }}/projects/neovim"
+    single_branch: true
+    version: stable
+    force: true
+  register: update_neovim
+
+- name: "Install neovim"
+  shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo && make install"
+  args:
+    chdir: "/home/{{ username }}/projects/neovim"
+  when: update_neovim.changed
+
 - name: "Copy nvim conf"
   copy:
     src: "{{ role_path }}/files/nvim/"
-    dest: "{{ ansible_env.HOME }}/.config/nvim/"
+    dest: "/home/{{ username }}/.config/nvim/"
     mode: 0644
     owner: "{{ username }}"
 
