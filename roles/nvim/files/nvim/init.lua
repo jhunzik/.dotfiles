@@ -1,5 +1,2 @@
-require('base')
-require('mappings')
-require('plugins')
+require("hunziker")
 
-vim.opt.clipboard:append { 'unnamedplus' }

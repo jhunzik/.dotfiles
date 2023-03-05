@@ -19,6 +19,7 @@
   register: update_neovim
 
 - name: "Install neovim"
+  become: true
   shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo && make install"
   args:
     chdir: "/home/{{ username }}/projects/neovim"
