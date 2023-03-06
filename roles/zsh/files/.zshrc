@@ -4,6 +4,9 @@ tmux-session dev
 
 alias vim=nvim
 
+#fzf bindings
+. $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+
 # Env Vars
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -30,6 +33,14 @@ function docker_log() {
 	docker logs -f "$1"
 }
 
+function maven_cmd() {
+  if [[ -f "mvnw" ]] then
+    ./mvnw $@
+  else
+    mvn $@
+  fi
+}
+
 # Aliases
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=15"
@@ -37,6 +48,10 @@ alias ls="exa --group-directories-first"
 alias ll="ls -lah"
 alias dsh="docker_ssh"
 alias dlog="docker_log"
+alias java8="sdk use java 8.0.332-tem"
+alias java11="sdk use java 11.0.16-tem"
+alias java17="sdk use java 17.0.3-tem"
+alias m="maven_cmd"
 
 # Start ZSH Plugins
 zstyle :compinstall filename '$HOME/.zshrc'
@@ -55,5 +70,3 @@ if [[ -e $HOME/.work.zsh ]] then;
 	source $HOME/.work.zsh
 fi
 
-# fzf key bindings
-[ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
