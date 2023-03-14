@@ -1,4 +1,6 @@
 ---
+username: "hunziker"
+
 # Apps and Packages
 packages:
   - curl

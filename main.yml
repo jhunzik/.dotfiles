@@ -1,6 +1,9 @@
 ---
-- hosts: localhost
-  connection: local
+- name: Configure host.
+  hosts: all
+
+  vars_files:
+    - default.config.yml
 
   roles:
     - role: system
