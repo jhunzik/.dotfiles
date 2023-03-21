@@ -12,6 +12,6 @@
     dest: "{{ ansible_env.HOME }}/.tmux/plugins/{{ item.dir }}"
     accept_hostkey: true
   with_items:
-    - { repo: "git@github.com:tmux-plugins/tpm.git", dir: "tpm" }
-    - { repo: "git@github.com:tmux-plugins/tmux-continuum.git", dir: "tmux-continuum" }
-    - { repo: "git@github.com:tmux-plugins/tmux-resurrect.git", dir: "tmux-resurrect" }
+    - { repo: "https://github.com/tmux-plugins/tpm.git", dir: "tpm" }
+    - { repo: "https://github.com/tmux-plugins/tmux-continuum.git", dir: "tmux-continuum" }
+    - { repo: "https://github.com/tmux-plugins/tmux-resurrect.git", dir: "tmux-resurrect" }

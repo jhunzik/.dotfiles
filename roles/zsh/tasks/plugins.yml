@@ -20,8 +20,8 @@
     dest: "{{ ansible_env.HOME }}/.zsh-plugins/{{ item.dir }}"
     accept_hostkey: true
   with_items:
-    - { repo: "git@github.com:zsh-users/zsh-syntax-highlighting.git", dir: "zsh-syntax-highlighting" }
-    - { repo: "git@github.com:zsh-users/zsh-autosuggestions.git", dir: "zsh-autosuggestions" }
-    - { repo: "git@github.com:zsh-users/zsh-history-substring-search.git", dir: "zsh-history-substring-search" }
-    - { repo: "git@github.com:zsh-users/zsh-completions.git", dir: "zsh-completions" }
-    - { repo: "git@github.com:sindresorhus/pure.git", dir: "pure" }
+    - { repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git", dir: "zsh-syntax-highlighting" }
+    - { repo: "https://github.com/zsh-users/zsh-autosuggestions.git", dir: "zsh-autosuggestions" }
+    - { repo: "https://github.com/zsh-users/zsh-history-substring-search.git", dir: "zsh-history-substring-search" }
+    - { repo: "https://github.com/zsh-users/zsh-completions.git", dir: "zsh-completions" }
+    - { repo: "https://github.com/sindresorhus/pure.git", dir: "pure" }

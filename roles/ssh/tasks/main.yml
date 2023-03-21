@@ -2,7 +2,4 @@
 - name: "Generate SSH Key for {{ username }}"
   user:
     name: "{{ username }}"
-    generate_ssh_key: yes
-    ssh_key_type: ed25519
-    ssh_key_file: "{{ ansible_env.HOME }}/.ssh/id_ed25519"
-    force: no
+    shell: /bin/zsh

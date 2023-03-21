@@ -13,9 +13,9 @@
   git:
     repo: "https://github.com/neovim/neovim"
     dest: "{{ ansible_env.HOME }}/projects/neovim"
-    single_branch: true
     version: stable
     force: true
+    depth: 1
   register: update_neovim
 
 - name: "Install neovim"

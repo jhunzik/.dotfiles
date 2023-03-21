@@ -23,7 +23,7 @@ if [[ -f "$DOTFILES_DIR/requirements.yml" ]]; then
 fi
 
 if [[ -f "$DOTFILES_DIR/vault-pass.sh" ]]; then
-    ansible-playbook --diff -K "$DOTFILES_DIR/main.yml" -t ${1:-all}
+	(cd $DOTFILES_DIR; ansible-playbook --diff -K "$DOTFILES_DIR/main.yml" -t ${1:-all})
 else
-    ansible-playbook --diff -K "$DOTFILES_DIR/main.yml" -t ${1:-all}
+	(cd $DOTFILES_DIR; ansible-playbook --diff -K "$DOTFILES_DIR/main.yml" -t ${1:-all})
 fi
