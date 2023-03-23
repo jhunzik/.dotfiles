@@ -1,8 +1,8 @@
 ---
 - name: "Update repositories."
   apt:
-    update_cache: true
-  changed_when: false
+    update_cache: True
+  changed_when: False
 
 - name: "Install packages."
   package:
@@ -11,3 +11,11 @@
   with_items:
     - "{{ packages }}"
     - "{{ ubuntu_packages }}"
+
+- name:
+  include_tasks:
+    file: users.yml
+
+- name:
+  include_tasks:
+     file: cron.yml

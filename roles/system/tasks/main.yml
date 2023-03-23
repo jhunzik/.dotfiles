@@ -1,7 +1,7 @@
 ---
 - include_tasks: common.yml
 
-- include_tasks: ubuntu.yml
+- include_tasks: linux.yml
   when: ansible_os_family == "Debian"
 
 - include_tasks: mac.yml

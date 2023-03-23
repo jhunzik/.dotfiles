@@ -5,7 +5,7 @@
     update_homebrew: true
     upgrade_all: true
     name: "{{ item }}"
-    state: present
+    state: latest
   with_items:
     - "{{ packages }}"
 
