@@ -1,7 +1,7 @@
 ---
 - name: "Create zsh plugins directory."
   file:
-    path: "{{ ansible_env.HOME }}/.zsh-plugins"
+    path: "/home/{{ username }}/.zsh-plugins"
     state: directory
     mode: 0744
     owner: "{{ username }}"
@@ -9,7 +9,7 @@
 - name: "Copy any additional zsh plugins."
   copy:
     src: "zsh_plugins/"
-    dest: "{{ ansible_env.HOME }}/.zsh-plugins/"
+    dest: "/home/{{ username }}/.zsh-plugins/"
     mode: 0744
     owner: "{{ username }}"
 
@@ -17,7 +17,7 @@
   become_user: "{{ username }}"
   git:
     repo: "{{ item.repo }}"
-    dest: "{{ ansible_env.HOME }}/.zsh-plugins/{{ item.dir }}"
+    dest: "/home/{{ username }}/.zsh-plugins/{{ item.dir }}"
     accept_hostkey: true
   with_items:
     - { repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git", dir: "zsh-syntax-highlighting" }

@@ -2,7 +2,7 @@
 - name: "Copy scripts to host."
   copy:
     src: "{{ item }}"
-    dest: "{{ ansible_env.HOME }}/bin/"
+    dest: "/home/{{ username }}/bin/"
     mode: 0744
     owner: "{{ username }}"
   with_fileglob:

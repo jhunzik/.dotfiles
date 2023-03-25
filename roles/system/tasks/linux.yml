@@ -12,6 +12,23 @@
     - "{{ packages }}"
     - "{{ ubuntu_packages }}"
 
+- name: Create Bitwarden directory
+  file:
+    path: /opt/bitwarden
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
+
+- name: Download Bitwarden binary
+  unarchive:
+    src: https://vault.bitwarden.com/download/?app=cli&platform=linux
+    dest: "/home/{{ username }}/bin/"
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
+
 - name:
   include_tasks:
     file: users.yml
