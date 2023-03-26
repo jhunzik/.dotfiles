@@ -1,0 +1,17 @@
+---
+- name: Add prebuilt-mpr repo gpg key
+  get_url:
+    url: https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub
+    dest: /etc/apt/trusted.gpg.d/prebuilt-mpr.asc
+    mode: '0644'
+    force: true
+
+- name: Add prebuilt-mpr repo
+  apt_repository: 
+    repo: "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/prebuilt-mpr.asc] https://proget.makedeb.org prebuilt-mpr {{ ansible_distribution_release }}"
+    state: present
+    update_cache: true
+
+- name: Install just
+  apt:
+    name: just
