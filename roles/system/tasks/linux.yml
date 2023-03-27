@@ -29,10 +29,8 @@
     group: "{{ username }}"
     mode: "0755"
 
-- name:
-  include_tasks:
-    file: users.yml
+- include_tasks: users.yml
 
-- name:
-  include_tasks:
-     file: cron.yml
+- include_tasks: cron.yml
+
+- include_tasks: just.yml
