@@ -1,5 +1,6 @@
 ---
 - name: Configure host.
+  become: true
   hosts: all
 
   vars_files:
@@ -23,14 +24,12 @@
   roles:
     - role: system
       tags: system
-      become: true
 
     - role: zsh
       tags: zsh
 
     - role: ssh
       tags: ssh
-      become: true
 
     - role: tmux
       tags: tmux
