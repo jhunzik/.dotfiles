@@ -12,7 +12,7 @@
   become_user: "{{ username }}"
   git:
     repo: "https://github.com/neovim/neovim"
-    dest: "{{ homedir }} }}/projects/neovim"
+    dest: "{{ homedir }}/projects/neovim"
     version: stable
     force: true
     depth: 1
