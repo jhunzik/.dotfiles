@@ -5,6 +5,17 @@
   vars_files:
     - default.config.yml
 
+  pre_tasks:
+    - name: Set home directory for Debian
+      set_fact:
+        homedir: "/home/{{ username }}"
+      when: ansible_os_family == "Debian"
+
+    - name: Set home directory for MacOS
+      set_fact:
+        homedir: "/Users/{{ username }}"
+      when: ansible_os_family == "Darwin"
+
   roles:
     - role: system
       tags: system

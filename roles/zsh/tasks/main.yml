@@ -2,8 +2,8 @@
 - name: "Create .zshrc"
   copy:
     src: .zshrc
-    dest: "{{ ansible_env.HOME }}/.zshrc"
+    dest: "{{ homedir }}/.zshrc"
 
 - name: "Install plugins"
-  include_tasks: 
+  include_tasks:
     file: plugins.yml
