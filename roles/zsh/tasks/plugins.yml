@@ -1,7 +1,7 @@
 ---
 - name: "Create zsh plugins directory."
   file:
-    path: "/home/{{ username }}/.zsh-plugins"
+    path: "{{ homedir }}/.zsh-plugins"
     state: directory
     mode: 0744
     owner: "{{ username }}"
@@ -9,7 +9,7 @@
 - name: "Copy any additional zsh plugins."
   copy:
     src: "zsh_plugins/"
-    dest: "/home/{{ username }}/.zsh-plugins/"
+    dest: "{{ homedir }}/.zsh-plugins/"
     mode: 0744
     owner: "{{ username }}"
 
@@ -17,11 +17,23 @@
   become_user: "{{ username }}"
   git:
     repo: "{{ item.repo }}"
-    dest: "/home/{{ username }}/.zsh-plugins/{{ item.dir }}"
+    dest: "{{ homedir }}/.zsh-plugins/{{ item.dir }}"
     accept_hostkey: true
   with_items:
-    - { repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git", dir: "zsh-syntax-highlighting" }
-    - { repo: "https://github.com/zsh-users/zsh-autosuggestions.git", dir: "zsh-autosuggestions" }
-    - { repo: "https://github.com/zsh-users/zsh-history-substring-search.git", dir: "zsh-history-substring-search" }
-    - { repo: "https://github.com/zsh-users/zsh-completions.git", dir: "zsh-completions" }
+    - {
+        repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git",
+        dir: "zsh-syntax-highlighting",
+      }
+    - {
+        repo: "https://github.com/zsh-users/zsh-autosuggestions.git",
+        dir: "zsh-autosuggestions",
+      }
+    - {
+        repo: "https://github.com/zsh-users/zsh-history-substring-search.git",
+        dir: "zsh-history-substring-search",
+      }
+    - {
+        repo: "https://github.com/zsh-users/zsh-completions.git",
+        dir: "zsh-completions",
+      }
     - { repo: "https://github.com/sindresorhus/pure.git", dir: "pure" }
