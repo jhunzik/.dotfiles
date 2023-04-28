@@ -50,7 +50,6 @@ alias bw-session="export \"BW_SESSION=\$(bw unlock --raw)\""
 #Docker
 alias dsh="docker_ssh"
 alias dlog="docker_log"
-alias dcp="docker-compose"
 #Java
 alias java8="sdk use java 8.0.332-tem"
 alias java11="sdk use java 11.0.16-tem"
