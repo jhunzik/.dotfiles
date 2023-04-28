@@ -10,11 +10,15 @@
       set_fact:
         homedir: "/home/{{ username }}"
       when: ansible_os_family == "Debian"
+      tags:
+        - always
 
     - name: Set home directory for MacOS
       set_fact:
         homedir: "/Users/{{ username }}"
       when: ansible_os_family == "Darwin"
+      tags:
+        - always
 
   roles:
     - role: system
