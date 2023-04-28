@@ -46,7 +46,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=15"
 alias ls="exa --group-directories-first"
 alias ll="ls -lah"
-alias bw-session="export \"BW_SESSION=$(bw unlock --raw)\""
+alias bw-session="export \"BW_SESSION=\$(bw unlock --raw)\""
 #Docker
 alias dsh="docker_ssh"
 alias dlog="docker_log"
