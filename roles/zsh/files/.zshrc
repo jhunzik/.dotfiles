@@ -1,11 +1,14 @@
-PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/bin:$HOME/bin:$HOME/.local/bin:/opt/puppetlabs/bin
+PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/usr/local/go:/bin:$HOME/bin:$HOME/.local/bin:/opt/puppetlabs/bin
 PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 tmux-session dev
 
 alias vim=nvim
 
 #fzf bindings
-. $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+if command -v brew
+then
+  . $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+fi
 
 # Env Vars
 HISTFILE=~/.histfile
