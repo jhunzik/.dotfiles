@@ -1,4 +1,4 @@
-PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/usr/local/go:/bin:$HOME/bin:$HOME/.local/bin:/opt/puppetlabs/bin
+PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/usr/local/go/bin:/bin:$HOME/bin:$HOME/.local/bin:/opt/puppetlabs/bin
 PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 tmux-session dev
 
