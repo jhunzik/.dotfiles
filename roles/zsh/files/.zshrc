@@ -69,6 +69,7 @@ for f in ~/.zsh-plugins/*/*.zsh; do source $f; done
 fpath+=$HOME/.zsh-plugins/pure
 autoload -Uz promptinit; promptinit
 prompt pure
+zstyle :prompt:pure:git:stash show yes
 # End ZSH Plugins
 
 # Source work .zsh
