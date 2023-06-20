@@ -2,7 +2,7 @@
 - name: "Copy scripts to host."
   copy:
     src: "{{ item }}"
-    dest: "/home/{{ username }}/bin/"
+    dest: "{{ homedir }}/bin/"
     mode: 0744
     owner: "{{ username }}"
   with_fileglob:

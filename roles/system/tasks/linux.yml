@@ -23,7 +23,7 @@
 - name: Download Bitwarden binary
   unarchive:
     src: https://vault.bitwarden.com/download/?app=cli&platform=linux
-    dest: "/home/{{ username }}/bin/"
+    dest: "{{ homedir }}/bin/"
     remote_src: true
     owner: "{{ username }}"
     group: "{{ username }}"
