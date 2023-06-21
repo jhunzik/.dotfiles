@@ -24,6 +24,7 @@
   args:
     chdir: "{{ homedir }}/projects/neovim"
   when: update_neovim.changed
+  retries: 3
 
 - name: "Copy nvim conf"
   copy:
