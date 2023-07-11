@@ -28,5 +28,3 @@ vim.opt.shell = 'zsh'
 vim.opt.backspace = 'start,eol,indent'
 
 vim.opt.updatetime = 50
-
-vim.g.mapleader = " "
