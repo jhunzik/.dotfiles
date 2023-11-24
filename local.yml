@@ -35,4 +35,5 @@
       tags: tmux
 
     - role: nvim
+      become: false
       tags: nvim

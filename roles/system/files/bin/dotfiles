@@ -13,8 +13,12 @@ if [ "$(uname -s)" = "Linux" ]; then
 elif [ "$(uname -s)" = "Darwin" ]; then
     echo "Detected Darwin-based OS"
     if ! [ -x "$(command -v ansible)" ]; then
+        if [ -x "$(command -v brew)"]; then
+            echo "Installing Homebrew"
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        fi
         echo "Installing ansible"
-        sudo brew install ansible -y
+        brew install ansible
     fi
 fi
 

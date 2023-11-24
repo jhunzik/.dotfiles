@@ -1,27 +1,29 @@
 ---
-username: "hunziker"
+username: "josh"
 
 # Apps and Packages
 packages:
   - curl
+  - cmake
   - htop
   - exa
   - fzf
+  - gettext
   - git
+  - ninja
   - neofetch
   - ripgrep
   - tmux
   - tree
   - zsh
 
+
 ubuntu_packages:
   - ninja-build
-  - gettext
   - libtool
   - libtool-bin
   - autoconf 
   - automake
-  - cmake
   - g++
   - pkg-config 
   - unzip 

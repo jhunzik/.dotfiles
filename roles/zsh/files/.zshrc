@@ -1,5 +1,4 @@
-PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/usr/local/go/bin:/bin:$HOME/bin:$HOME/.local/bin:/opt/puppetlabs/bin
-PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+PATH=/opt/homebrew/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/usr/local/go/bin:/bin:$PATH
 tmux-session dev
 
 alias vim=nvim

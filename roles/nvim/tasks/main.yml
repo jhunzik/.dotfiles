@@ -1,13 +1,4 @@
 ---
-- name: "Unzip win32yank utility"
-  become: true
-  unarchive:
-    src: https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
-    dest: /usr/local/bin/
-    remote_src: true
-    mode: 0755
-  when: ansible_os_family == "Debian"
-
 - name: "Clone neovim stable branch"
   become_user: "{{ username }}"
   git:
@@ -26,11 +17,8 @@
   when: update_neovim.changed
   retries: 3
 
-- name: "Copy nvim conf"
-  copy:
-    src: "{{ role_path }}/files/nvim/"
-    dest: "{{ homedir }}/.config/nvim/"
-    mode: 0644
-    owner: "{{ username }}"
-
-- import_tasks: plugins.yml
+- name: "Copy NvChad repo"
+  git:
+    repo: "https://github.com/NvChad/NvChad"
+    dest: "{{ homedir }}/.config/nvim"
+    depth: 1

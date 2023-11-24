@@ -1,5 +1,5 @@
 ---
-- name: "Generate SSH Key for {{ username }}"
+- name: "Set shell for {{ username }}"
   user:
     name: "{{ username }}"
     shell: /bin/zsh
