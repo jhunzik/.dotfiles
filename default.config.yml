@@ -3,6 +3,7 @@ username: "josh"
 
 # Apps and Packages
 packages:
+  - bat
   - curl
   - cmake
   - htop

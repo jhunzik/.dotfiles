@@ -1,7 +1,6 @@
 PATH=/opt/homebrew/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/usr/local/go/bin:/bin:$PATH
+PATH=$PATH:/opt/puppetlabs/bin
 tmux-session dev
-
-alias vim=nvim
 
 #fzf bindings
 if command -v brew
@@ -15,7 +14,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 VISUAL=nvim
 EDITOR=$VISUAL
-FZF_DEFAULT_OPTS="--height 40% --layout reverse --info inline --border"
+FZF_DEFAULT_OPTS="--height 40% --layout reverse --info inline --border --preview 'bat --color=always {}'"
 FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob "!.git/*""
 PY_COLORS=1
 ANSIBLE_FORCE_COLOR=1
@@ -27,6 +26,22 @@ bindkey -e
 stty erase '^?'
 
 # Functions
+function fdex() {
+	CONTAINER=`docker ps | rg -v CONTAINER | awk '-F ' ' {print $NF}' | fzf`
+	if [ ! -z $CONTAINER ]
+	then
+		docker exec -it $CONTAINER bash
+	fi
+}
+
+function fdlog() {
+	CONTAINER=`docker ps | rg -v CONTAINER | awk '-F ' ' {print $NF}' | fzf`
+	if [ ! -z $CONTAINER ]
+	then
+		docker logs -f $CONTAINER
+	fi
+}
+
 function docker_ssh() {
 	docker exec -it "$1" /bin/bash
 }
@@ -44,19 +59,25 @@ function maven_cmd() {
 }
 
 # Aliases
+alias bw-session="export \"BW_SESSION=\$(bw unlock --raw)\""
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=15"
 alias ls="exa --group-directories-first"
 alias ll="ls -lah"
-alias bw-session="export \"BW_SESSION=\$(bw unlock --raw)\""
+alias vim=nvim
+alias zsh-reload="source ~/.zshrc && echo 'zsh config reloaded'"
+
 #Docker
-alias dsh="docker_ssh"
-alias dlog="docker_log"
+alias dsh="fdex"
+alias dlog="fdlog"
+
 #Java
 alias java8="sdk use java 8.0.332-tem"
 alias java11="sdk use java 11.0.16-tem"
 alias java17="sdk use java 17.0.3-tem"
 alias m="maven_cmd"
+
+
 
 # Start ZSH Plugins
 zstyle :compinstall filename '$HOME/.zshrc'
