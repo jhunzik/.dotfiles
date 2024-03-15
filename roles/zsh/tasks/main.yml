@@ -3,6 +3,8 @@
   copy:
     src: .zshrc
     dest: "{{ homedir }}/.zshrc"
+    owner: "{{ username }}"
+    group: "{{ username }}"
 
 - name: "Install plugins"
   include_tasks:

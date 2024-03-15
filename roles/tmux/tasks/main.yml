@@ -4,6 +4,8 @@
     src: .tmux.conf
     dest: "{{ homedir }}/.tmux.conf"
     mode: 0644
+    owner: "{{ username }}"
+    group: "{{ username }}"
 
 - name: "Copy tmux plugin repos"
   become_user: "{{ username }}"

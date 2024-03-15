@@ -4,14 +4,14 @@ username: "josh"
 # Apps and Packages
 packages:
   - bat
+  - btop
   - curl
   - cmake
+  - dnsutils
   - htop
-  - exa
   - fzf
   - gettext
   - git
-  - ninja
   - neofetch
   - ripgrep
   - tmux
