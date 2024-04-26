@@ -1,6 +1,7 @@
-PATH=/opt/homebrew/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/usr/local/go/bin:/bin:$PATH
+PATH=/opt/homebrew/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/usr/local/go/bin:/bin
 PATH=$PATH:/opt/puppetlabs/bin
 PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:/$HOME/go/bin
 tmux-session dev
 
 #fzf bindings
@@ -19,6 +20,11 @@ FZF_DEFAULT_OPTS="--height 40% --layout reverse --info inline --border --preview
 FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob "!.git/*""
 PY_COLORS=1
 ANSIBLE_FORCE_COLOR=1
+
+NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
 unsetopt beep
 bindkey -e
