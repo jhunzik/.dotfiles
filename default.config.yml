@@ -29,6 +29,7 @@ ubuntu_packages:
   - pkg-config 
   - unzip 
   - doxygen
+  - xsel
 
 apps:
   - notion

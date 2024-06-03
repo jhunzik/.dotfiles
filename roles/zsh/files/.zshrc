@@ -73,6 +73,8 @@ alias ls="eza --group-directories-first"
 alias ll="ls -lah"
 alias vim=nvim
 alias vi=nvim
+alias pbcopy="xsel --input --clipboard"
+alias pbpaste="xsel --output --clipboard"
 alias zsh-reload="source ~/.zshrc && echo 'zsh config reloaded'"
 
 #Docker
