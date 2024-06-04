@@ -1,5 +1,5 @@
 ---
-- name: "Copy scripts to host."
+- name: Copy scripts to host.
   copy:
     src: "{{ item }}"
     dest: "{{ homedir }}/bin/"
@@ -7,3 +7,20 @@
     owner: "{{ username }}"
   with_fileglob:
     - bin/*
+
+- name: Check if rust is installed
+  shell: which cargo
+  register: cargo_exists
+  ignore_errors: true
+
+- name: Install rust
+  block:
+    - name:  Download rust installer
+      get_url:
+        url: "https://sh.rustup.rs"
+        dest: /tmp/sh.rustup.rs
+        mode: 0755
+        force: true
+    - name: Install Rust/Cargo
+      shell: /tmp/sh.rustup.rs -y
+  when: cargo_exists.rc != 0

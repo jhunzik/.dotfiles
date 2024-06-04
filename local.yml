@@ -14,9 +14,14 @@
       tags:
         - always
 
-    - name: Set home directory for MacOS
-      set_fact:
-        homedir: "/Users/{{ username }}"
+    - name: Work Mac stuff
+      block:
+        - name: Set work username
+          set_fact:
+            username: "hunziker"
+        - name: Set home directory for MacOS
+          set_fact:
+            homedir: "/Users/{{ username }}"
       when: ansible_os_family == "Darwin"
       tags:
         - always
@@ -37,3 +42,6 @@
     - role: nvim
       become: false
       tags: nvim
+
+    - role: alacritty
+      tags: alacritty

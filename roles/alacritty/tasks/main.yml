@@ -1,0 +1,39 @@
+---
+- name: Install alacritty with cargo
+  community.general.cargo:
+    name: alacritty
+    executable: "{{ homedir }}/.cargo/bin/cargo"
+
+- name: Create alacritty directories
+  file:
+    dest: "{{ homedir }}/.config/alacritty"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    recurse: true
+    mode: 0744
+    
+- name: Install alacritty themes
+  become: true
+  git:
+    repo: "https://github.com/alacritty/alacritty-theme.git"
+    dest: "{{ homedir }}/.config/alacritty/themes"
+    depth: 1
+    single_branch: true
+
+- name: Update themes permissions
+  become: true
+  file:
+    path: "{{ homedir }}/.config/alacritty/themes/"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    state: directory
+    recurse: true
+
+- name: Template alacritty configs
+  copy:
+    src: files/alacritty.toml
+    dest: "{{ homedir }}/.config/alacritty/"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0744

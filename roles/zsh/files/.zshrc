@@ -87,6 +87,8 @@ alias java11="sdk use java 11.0.16-tem"
 alias java17="sdk use java 17.0.3-tem"
 alias m="maven_cmd"
 
+# Source cargo env
+[ -f ~/.cargo/env ] && source $HOME/.cargo/env
 
 
 # Start ZSH Plugins

@@ -20,15 +20,21 @@ packages:
 
 
 ubuntu_packages:
-  - ninja-build
-  - libtool
-  - libtool-bin
   - autoconf 
   - automake
-  - g++
-  - pkg-config 
-  - unzip 
+  - cmake
   - doxygen
+  - g++
+  - libfreetype6
+  - libfontconfig1-dev
+  - libxcb-xfixes0-dev
+  - libxkbcommon-dev
+  - libtool
+  - libtool-bin
+  - ninja-build
+  - pkg-config 
+  - python3
+  - unzip 
   - xsel
 
 apps:
