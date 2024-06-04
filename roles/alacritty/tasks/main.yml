@@ -10,7 +10,6 @@
     state: directory
     owner: "{{ username }}"
     group: "{{ username }}"
-    recurse: true
     mode: 0744
     
 - name: Install alacritty themes
@@ -28,7 +27,6 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     state: directory
-    recurse: true
 
 - name: Template alacritty configs
   copy:
