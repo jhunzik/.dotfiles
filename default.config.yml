@@ -18,12 +18,12 @@ packages:
   - tree
   - zsh
 
-
 ubuntu_packages:
   - autoconf 
   - automake
   - cmake
   - doxygen
+  - eza
   - g++
   - libfreetype6
   - libfontconfig1-dev
@@ -40,7 +40,6 @@ ubuntu_packages:
 apps:
   - notion
   - slack
-  - vagrant
 
 mac_apps:
   - alfred

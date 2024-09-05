@@ -19,6 +19,6 @@
 
 - name: "Copy NvChad repo"
   git:
-    repo: "https://github.com/NvChad/NvChad"
+    repo: "https://github.com/NvChad/starter"
     dest: "{{ homedir }}/.config/nvim"
     depth: 1

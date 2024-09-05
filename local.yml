@@ -43,5 +43,3 @@
       become: false
       tags: nvim
 
-    - role: alacritty
-      tags: alacritty

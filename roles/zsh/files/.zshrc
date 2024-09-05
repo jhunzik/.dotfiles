@@ -2,6 +2,7 @@ PATH=/opt/homebrew/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin
 PATH=$PATH:/opt/puppetlabs/bin
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:/$HOME/go/bin
+PATH+$PATH:/$HOME/.cargo/bin
 tmux-session dev
 
 #fzf bindings
