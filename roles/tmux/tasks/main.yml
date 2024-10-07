@@ -23,3 +23,7 @@
         repo: "https://github.com/tmux-plugins/tmux-resurrect.git",
         dir: "tmux-resurrect",
       }
+    - {
+        repo: "https://github.com/janoamaral/tokyo-night-tmux.git",
+        dir: "tokyo-night-tmux",
+      }
