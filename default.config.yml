@@ -1,5 +1,5 @@
 ---
-username: "josh"
+username: "hunziker"
 
 # Apps and Packages
 packages:
@@ -20,7 +20,7 @@ packages:
   - zsh
 
 ubuntu_packages:
-  - autoconf 
+  - autoconf
   - automake
   - cmake
   - doxygen
@@ -32,9 +32,9 @@ ubuntu_packages:
   - libtool
   - libtool-bin
   - ninja-build
-  - pkg-config 
+  - pkg-config
   - python3
-  - unzip 
+  - unzip
   - xsel
 
 apps:

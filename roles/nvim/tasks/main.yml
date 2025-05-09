@@ -17,8 +17,9 @@
   when: update_neovim.changed
   retries: 3
 
-- name: "Copy NvChad repo"
+- name: "Copy LazyVim repo"
   git:
-    repo: "https://github.com/NvChad/starter"
+    repo: "https://github.com/LazyVim/starter.git"
     dest: "{{ homedir }}/.config/nvim"
     depth: 1
+

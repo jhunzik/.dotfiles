@@ -1,10 +1,8 @@
 PATH=/opt/homebrew/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:/usr/local/go/bin:/bin
 PATH=$PATH:/opt/puppetlabs/bin
 PATH=$PATH:/usr/local/go/bin
-PATH=$PATH:/$HOME/go/bin
-PATH=$PATH:/$HOME/.cargo/bin
-PATH="$PATH:/usr/bin/zig-linux-x86_64-0.13.0/zig"
-PATH=$PATH:/nix/var/nix/profiles/default/bin/
+PATH=$PATH:$HOME/go/bin
+PATH=$PATH:$HOME/.cargo/bin
 tmux-session dev
 
 #fzf bindings
@@ -73,6 +71,7 @@ alias bw-session="export \"BW_SESSION=\$(bw unlock --raw)\""
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=15"
 alias ll="ls -lah"
+alias lg="lazygit"
 alias vim=nvim
 alias vi=nvim
 alias pbcopy="xsel --input --clipboard"
