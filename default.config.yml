@@ -7,6 +7,7 @@ packages:
   - btop
   - curl
   - cmake
+  - direnv
   - dnsutils
   - htop
   - fzf
@@ -23,7 +24,6 @@ ubuntu_packages:
   - automake
   - cmake
   - doxygen
-  - eza
   - g++
   - libfreetype6
   - libfontconfig1-dev

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-if ! xrandr --listactivemonitors | grep DP-0 >/dev/null; then
+if ! xrandr --listactivemonitors | grep DP-2 >/dev/null; then
     echo "Turning on second monitor..."
-	xrandr --output DP-0 --primary --mode 2560x1440 --rate 144.00 --output DP-2 --left-of DP-0 --mode 2560x1440 --rate 144.00
+	xrandr --output DP-2 --primary --mode 2560x1440 --rate 144.00 --output DP-0 --left-of DP-2 --mode 2560x1440 --rate 144.00
 else
     echo "Shutting off second monitor..."
-	xrandr --output DP-0 --off
+	xrandr --output DP-2 --off
 fi

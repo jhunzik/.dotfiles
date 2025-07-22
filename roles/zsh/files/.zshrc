@@ -3,6 +3,8 @@ PATH=$PATH:/opt/puppetlabs/bin
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:/$HOME/go/bin
 PATH=$PATH:/$HOME/.cargo/bin
+PATH="$PATH:/usr/bin/zig-linux-x86_64-0.13.0/zig"
+PATH=$PATH:/nix/var/nix/profiles/default/bin/
 tmux-session dev
 
 #fzf bindings
@@ -70,7 +72,6 @@ function maven_cmd() {
 alias bw-session="export \"BW_SESSION=\$(bw unlock --raw)\""
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=15"
-alias ls="eza --group-directories-first"
 alias ll="ls -lah"
 alias vim=nvim
 alias vi=nvim
@@ -90,6 +91,9 @@ alias m="maven_cmd"
 
 # Source cargo env
 [ -f ~/.cargo/env ] && source $HOME/.cargo/env
+
+# direnv hooks
+eval "$(direnv hook zsh)"
 
 
 # Start ZSH Plugins
