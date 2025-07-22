@@ -15,7 +15,7 @@
   args:
     chdir: "{{ homedir }}/projects/neovim"
   when: update_neovim.changed
-  retries: 3
+  retries: 5
 
 - name: "Copy LazyVim repo"
   git:
