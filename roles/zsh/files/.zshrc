@@ -78,11 +78,14 @@ alias pbcopy="xsel --input --clipboard"
 alias pbpaste="xsel --output --clipboard"
 alias zsh-reload="source ~/.zshrc && echo 'zsh config reloaded'"
 
-#Docker
+# Docker
 alias dsh="fdex"
 alias dlog="fdlog"
 
-#Java
+# K8s
+alias k="kubectl"
+
+# Java
 alias java8="sdk use java 8.0.332-tem"
 alias java11="sdk use java 11.0.16-tem"
 alias java17="sdk use java 17.0.3-tem"
