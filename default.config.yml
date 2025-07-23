@@ -34,7 +34,7 @@ ubuntu_packages:
   - libtool
   - libtool-bin
   - lua5.4
-  - liblua5.4
+  - liblua5.4-dev
   - ninja-build
   - pkg-config
   - python3

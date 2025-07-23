@@ -31,7 +31,7 @@
 
 - name: "Create fonts directory"
   file:
-    path: ~/.fonts
+    path: "{{ homedir }}/.fonts"
     state: directory
     owner: "{{ username }}"
     group: "{{ username }}"
@@ -40,7 +40,7 @@
 - name: "Install fonts"
   unarchive:
     src: "{{ item }}"
-    dest: ~/.fonts
+    dest: "{{ homedir }}/.fonts"
     remote_src: true
   with_items:
     - "https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip"
