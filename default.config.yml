@@ -22,15 +22,19 @@ packages:
 ubuntu_packages:
   - autoconf
   - automake
+  - build-essential
   - cmake
   - doxygen
   - g++
   - libfreetype6
   - libfontconfig1-dev
+  - libreadline-dev
   - libxcb-xfixes0-dev
   - libxkbcommon-dev
   - libtool
   - libtool-bin
+  - lua5.4
+  - liblua5.4
   - ninja-build
   - pkg-config
   - python3

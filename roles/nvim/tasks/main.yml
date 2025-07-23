@@ -17,9 +17,46 @@
   when: update_neovim.changed
   retries: 5
 
-- name: "Copy LazyVim repo"
-  git:
-    repo: "https://github.com/LazyVim/starter.git"
-    dest: "{{ homedir }}/.config/nvim"
-    depth: 1
+- name: "Check if LazyVim config is empty"
+  stat:
+    path: "{{ homedir }}.config/.nvim"
+  register: lz_stat
 
+- name: "Configure LazyVim"
+  when: lz_stat.stat.exists and lz_stat.stat.isdir and lz_stat.stat.size == 0
+  block:
+    - name: "Copy LazyVim repo"
+      git:
+        repo: "https://github.com/LazyVim/starter"
+        dest: "{{ homedir }}/.config/nvim"
+        update: true
+        depth: 1
+    - name: "Remove LazyVim .git folder"
+      file:
+        path: "{{ homedir }}/.config/nvim/.git"
+        state: absent
+
+- name: Check if luarocks exists
+  command: which luarocks
+  register: command_check
+  failed_when: false
+  changed_when: false
+
+- name: "Install LuaRocks"
+  when: command_check.rc != 0
+  block:
+    - name: "Copy LuaRocks release"
+      unarchive:
+        src: "https://luarocks.github.io/luarocks/releases/luarocks-{{ luarocks_version }}.tar.gz"
+        dest: "/tmp"
+        remote_src: true
+        creates: "/tmp/luarocks-{{ luarocks_version }}"
+
+    - name: "Configure and install LuaRocks"
+      shell: |
+        ./configure
+        make
+        make install
+      args:
+        chdir: /tmp/luarocks-{{ luarocks_version }}
+      become: true
