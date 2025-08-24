@@ -36,4 +36,3 @@
         repo: "https://github.com/zsh-users/zsh-completions.git",
         dir: "zsh-completions",
       }
-    - { repo: "https://github.com/sindresorhus/pure.git", dir: "pure" }

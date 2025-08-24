@@ -24,3 +24,14 @@
     - name: Install Rust/Cargo
       shell: /tmp/sh.rustup.rs -y
   when: not cargo_stat.stat.exists
+
+- name: Install/update Starship
+  shell: curl -sS https://starship.rs/install.sh | sh -s -- -y
+  changed_when: false
+
+- name: Copy starship config
+  copy:
+    src: starship/starship.toml
+    dest: "{{ homedir }}/.config"
+    mode: 0644
+    owner: "{{ username }}"

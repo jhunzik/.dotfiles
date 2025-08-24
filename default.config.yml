@@ -1,19 +1,25 @@
 ---
-username: "hunziker"
+username: "josh"
 
 # Apps and Packages
 packages:
+  - bash
   - bat
+  - bc
   - btop
-  - curl
   - cmake
+  - coreutils
+  - curl
   - direnv
   - dnsutils
-  - htop
   - fzf
+  - htop
+  - gawk
   - gettext
   - git
+  - jq
   - neofetch
+  - playerctl
   - ripgrep
   - tmux
   - tree

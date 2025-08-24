@@ -30,9 +30,6 @@ NVM_DIR="$HOME/.config/nvm"
 unsetopt beep
 bindkey -e
 
-# Pure prompt stuff
-stty erase '^?'
-
 # Functions
 function fdex() {
 	CONTAINER=`docker ps | rg -v CONTAINER | awk '-F ' ' {print $NF}' | fzf`
@@ -74,6 +71,7 @@ alias ll="ls -lah"
 alias lg="lazygit"
 alias vim=nvim
 alias vi=nvim
+alias n=nvim
 alias pbcopy="xsel --input --clipboard"
 alias pbpaste="xsel --output --clipboard"
 alias zsh-reload="source ~/.zshrc && echo 'zsh config reloaded'"
@@ -94,25 +92,16 @@ alias m="maven_cmd"
 # Source cargo env
 [ -f ~/.cargo/env ] && source $HOME/.cargo/env
 
-# direnv hooks
+# hooks
 eval "$(direnv hook zsh)"
+eval "$(starship init zsh)"
 
 
-# Start ZSH Plugins
-zstyle :compinstall filename '$HOME/.zshrc'
 autoload -Uz compinit; compinit
-
 # Source all plugins
 for f in ~/.zsh-plugins/*/*.zsh; do source $f; done
-
-fpath+=$HOME/.zsh-plugins/pure
-autoload -Uz promptinit; promptinit
-prompt pure
-zstyle :prompt:pure:git:stash show yes
-# End ZSH Plugins
 
 # Source work .zsh
 if [[ -e $HOME/.work.zsh ]] then;
 	source $HOME/.work.zsh
 fi
-
