@@ -1,5 +1,5 @@
 ---
-username: "josh"
+username: "{{ ansible_env.SUDO_USER | default(ansible_env.USER) }}"
 
 # Apps and Packages
 packages:
