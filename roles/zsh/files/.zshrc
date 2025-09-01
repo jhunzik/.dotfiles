@@ -22,7 +22,7 @@ FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob "!.git/*""
 PY_COLORS=1
 ANSIBLE_FORCE_COLOR=1
 
-NVM_DIR="$HOME/.config/nvm"
+NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
@@ -95,6 +95,7 @@ alias m="maven_cmd"
 # hooks
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 
 autoload -Uz compinit; compinit
