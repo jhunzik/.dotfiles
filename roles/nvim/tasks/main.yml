@@ -1,21 +1,61 @@
 ---
-- name: "Clone neovim stable branch"
-  become_user: "{{ username }}"
-  git:
-    repo: "https://github.com/neovim/neovim"
-    dest: "{{ homedir }}/projects/neovim"
-    version: stable
-    force: true
-    depth: 1
-  register: update_neovim
+- name: "Get latest Neovim release from GitHub"
+  uri:
+    url: "https://api.github.com/repos/neovim/neovim/releases/latest"
+    method: GET
+    return_content: yes
+    headers:
+      Accept: "application/vnd.github.v3+json"
+    status_code: [200, 304]
+  register: nvim_release_resp
+  failed_when: false
 
-- name: "Install neovim"
-  become: true
-  shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo && make install"
-  args:
-    chdir: "{{ homedir }}/projects/neovim"
-  when: update_neovim.changed
-  retries: 5
+- name: "Set latest Neovim tag from GitHub response"
+  set_fact:
+    nvim_latest: >-
+      {{ nvim_release_resp.json.tag_name | default((nvim_release_resp.content | default('') | from_json).tag_name | default('')) }}
+
+- name: "Get installed nvim version"
+  command: nvim --version
+  register: nvim_installed_raw
+  failed_when: false
+  changed_when: false
+
+- name: "Parse installed nvim version"
+  set_fact:
+    nvim_installed: >-
+      {{ nvim_installed_raw.stdout | regex_search('v\d+\.\d+\.\d+') }}
+
+- name: "Compare installed nvim to latest release"
+  set_fact:
+    nvim_up_to_date: >-
+      {{ nvim_installed == nvim_latest }}
+
+- name: "Install/Upgrade neovim from source"
+  when: not nvim_up_to_date
+  block:
+    - name: "Delete existing neovim directory"
+      become: true
+      changed_when: false
+      file:
+        path: "{{ homedir }}/projects/neovim"
+        state: absent
+
+    - name: "Ensure neovim repository is present and up-to-date"
+      become_user: "{{ username }}"
+      git:
+        repo: "https://github.com/neovim/neovim"
+        dest: "{{ homedir }}/projects/neovim"
+        version: stable
+        update: yes
+        depth: 1
+
+    - name: "Build and install neovim"
+      become: true
+      shell: "make CMAKE_BUILD_TYPE=RelWithDebInfo && make install"
+      args:
+        chdir: "{{ homedir }}/projects/neovim"
+      retries: 5
 
 - name: "Check if LazyVim config is empty"
   stat:

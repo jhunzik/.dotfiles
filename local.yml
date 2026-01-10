@@ -7,6 +7,11 @@
     - default.config.yml
 
   pre_tasks:
+    - name: Set default username
+      set_fact:
+        username: "{{ ansible_env.SUDO_USER | default(ansible_env.USER) }}"
+      tags:
+        - always
     - name: Set home directory for Debian
       set_fact:
         homedir: "/home/{{ username }}"

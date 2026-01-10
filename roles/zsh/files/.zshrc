@@ -75,6 +75,7 @@ alias n=nvim
 alias pbcopy="xsel --input --clipboard"
 alias pbpaste="xsel --output --clipboard"
 alias zsh-reload="source ~/.zshrc && echo 'zsh config reloaded'"
+alias tf="terraform"
 
 # Docker
 alias dsh="fdex"
