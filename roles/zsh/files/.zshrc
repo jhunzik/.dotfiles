@@ -3,6 +3,7 @@ PATH=$PATH:/opt/puppetlabs/bin
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:$HOME/go/bin
 PATH=$PATH:$HOME/.cargo/bin
+PATH=$PATH:$HOME/.opencode/bin
 tmux-session dev
 
 #fzf bindings
@@ -107,3 +108,7 @@ for f in ~/.zsh-plugins/*/*.zsh; do source $f; done
 if [[ -e $HOME/.work.zsh ]] then;
 	source $HOME/.work.zsh
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
