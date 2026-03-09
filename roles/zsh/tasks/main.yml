@@ -6,6 +6,14 @@
     owner: "{{ username }}"
     group: "{{ username }}"
 
+- name: "Copy p10k config"
+  copy:
+    src: .p10k.zsh
+    dest: "{{ homedir }}/.p10k.zsh"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  when: ansible_facts['os_family'] == "Archlinux"
+
 - name: "Install plugins"
   include_tasks:
     file: plugins.yml

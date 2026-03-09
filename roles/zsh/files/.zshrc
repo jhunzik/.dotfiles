@@ -6,10 +6,11 @@ PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/.opencode/bin
 tmux-session dev
 
-#fzf bindings
-if command -v brew
-then
-  . $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+# fzf bindings
+if command -v brew > /dev/null 2>&1; then
+  source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+elif [ -f /usr/share/fzf/key-bindings.zsh ]; then
+  source /usr/share/fzf/key-bindings.zsh
 fi
 
 # Env Vars
@@ -73,8 +74,14 @@ alias lg="lazygit"
 alias vim=nvim
 alias vi=nvim
 alias n=nvim
-alias pbcopy="xsel --input --clipboard"
-alias pbpaste="xsel --output --clipboard"
+# Clipboard (Wayland vs X11)
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  alias pbcopy="wl-copy"
+  alias pbpaste="wl-paste"
+else
+  alias pbcopy="xsel --input --clipboard"
+  alias pbpaste="xsel --output --clipboard"
+fi
 alias zsh-reload="source ~/.zshrc && echo 'zsh config reloaded'"
 alias tf="terraform"
 
@@ -96,8 +103,15 @@ alias m="maven_cmd"
 
 # hooks
 eval "$(direnv hook zsh)"
-eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+# Prompt (Powerlevel10k on Arch, Starship elsewhere)
+if [ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]; then
+  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+  [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+else
+  eval "$(starship init zsh)"
+fi
 
 
 autoload -Uz compinit; compinit

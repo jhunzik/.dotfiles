@@ -32,7 +32,7 @@
       {{ nvim_installed == nvim_latest }}
 
 - name: "Install/Upgrade neovim from source"
-  when: not nvim_up_to_date
+  when: not nvim_up_to_date and ansible_facts['os_family'] != "Archlinux"
   block:
     - name: "Delete existing neovim directory"
       become: true
@@ -83,7 +83,7 @@
   changed_when: false
 
 - name: "Install LuaRocks"
-  when: command_check.rc != 0
+  when: command_check.rc != 0 and ansible_facts['os_family'] != "Archlinux"
   block:
     - name: "Copy LuaRocks release"
       unarchive:

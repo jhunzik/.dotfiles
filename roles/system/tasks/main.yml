@@ -2,7 +2,10 @@
 - include_tasks: common.yml
 
 - include_tasks: linux.yml
-  when: ansible_os_family == "Debian"
+  when: ansible_facts['os_family'] == "Debian"
+
+- include_tasks: archlinux.yml
+  when: ansible_facts['os_family'] == "Archlinux"
 
 - include_tasks: mac.yml
-  when: ansible_os_family == "Darwin"
+  when: ansible_facts['os_family'] == "Darwin"
