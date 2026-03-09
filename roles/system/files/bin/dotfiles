@@ -7,8 +7,13 @@ DOTFILES_DIR="$HOME/.dotfiles"
 if [ "$(uname -s)" = "Linux" ]; then
     echo "Detected Linux-based OS"
     if ! [ -x "$(command -v ansible)" ]; then
-        echo "Installing ansible"
-        sudo apt install ansible -y
+        if [ -x "$(command -v pacman)" ]; then
+            echo "Installing ansible (pacman)"
+            sudo pacman -Syu --noconfirm ansible
+        else
+            echo "Installing ansible (apt)"
+            sudo apt install ansible -y
+        fi
     fi
 elif [ "$(uname -s)" = "Darwin" ]; then
     echo "Detected Darwin-based OS"

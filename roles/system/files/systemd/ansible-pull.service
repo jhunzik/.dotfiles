@@ -1,0 +1,9 @@
+[Unit]
+Description=Ansible pull dotfiles
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ansible-pull -o -U https://github.com/jhunzik/.dotfiles.git
+User=ansible

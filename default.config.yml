@@ -1,9 +1,9 @@
 ---
-# Starship Prompt
+# Starship Prompt (Debian/macOS only - Arch uses Powerlevel10k)
 starship_version: "1.24.2"
 starsip_install_directory: "/usr/local/bin"
 
-# Apps and Packages
+# Apps and Packages (cross-platform)
 packages:
   - bash
   - bat
@@ -13,7 +13,7 @@ packages:
   - coreutils
   - curl
   - direnv
-  - dnsutils
+  - fastfetch
   - fzf
   - htop
   - gawk
@@ -21,7 +21,6 @@ packages:
   - git
   - jq
   - just
-  - neofetch
   - playerctl
   - ripgrep
   - tmux
@@ -34,6 +33,7 @@ ubuntu_packages:
   - automake
   - build-essential
   - cmake
+  - dnsutils
   - doxygen
   - g++
   - libfreetype6
@@ -50,6 +50,21 @@ ubuntu_packages:
   - python3
   - unzip
   - xsel
+
+arch_packages:
+  - base-devel
+  - bind
+  - bitwarden-cli
+  - ghostty
+  - lua
+  - luarocks
+  - neovim
+  - python
+  - ttf-jetbrains-mono-nerd
+  - unzip
+  - wl-clipboard
+  - xsel
+  - zsh-theme-powerlevel10k
 
 apps:
   - notion

@@ -1,0 +1,12 @@
+# Ghostty Config - Tokyo Night
+
+# Theme
+theme = tokyonight
+
+# Font
+font-family = JetBrains Mono
+font-size = 16
+
+# Window
+window-padding-x = 0
+window-padding-y = 0

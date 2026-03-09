@@ -1,0 +1,52 @@
+---
+- name: "Update package database"
+  community.general.pacman:
+    update_cache: true
+  changed_when: false
+
+- name: "Install packages"
+  community.general.pacman:
+    name: "{{ packages + arch_packages }}"
+    state: present
+
+- name: "Create Ghostty config directory"
+  file:
+    path: "{{ homedir }}/.config/ghostty"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: "0755"
+
+- name: "Copy Ghostty config"
+  copy:
+    src: "ghostty/config"
+    dest: "{{ homedir }}/.config/ghostty/config"
+    mode: 0644
+    owner: "{{ username }}"
+
+- include_tasks: users.yml
+
+- name: "Copy ansible-pull systemd service"
+  copy:
+    src: "systemd/ansible-pull.service"
+    dest: "/etc/systemd/system/ansible-pull.service"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reload systemd
+
+- name: "Copy ansible-pull systemd timer"
+  copy:
+    src: "systemd/ansible-pull.timer"
+    dest: "/etc/systemd/system/ansible-pull.timer"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reload systemd
+
+- name: "Enable and start ansible-pull timer"
+  systemd:
+    name: ansible-pull.timer
+    enabled: true
+    state: started
+    daemon_reload: true
