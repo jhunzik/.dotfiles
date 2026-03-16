@@ -56,10 +56,14 @@ arch_packages:
   - bind
   - bitwarden-cli
   - ghostty
+  - kubectl
   - lua
   - luarocks
   - neovim
+  - obsidian
   - python
+  - syncthing
+  - telegram-desktop
   - ttf-jetbrains-mono-nerd
   - unzip
   - wl-clipboard

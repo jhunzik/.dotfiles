@@ -1,7 +1,7 @@
 # Ghostty Config - Tokyo Night
 
 # Theme
-theme = tokyonight
+theme = TokyoNight
 
 # Font
 font-family = JetBrains Mono
